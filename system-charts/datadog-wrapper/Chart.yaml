@@ -1,0 +1,10 @@
+apiVersion: v2
+name: datadog-system-wrapper
+description: A Lumen Datadog wrapper helm chart to install the datadog-secret and public repository
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+dependencies:
+  - name: datadog
+    version: "3.38.4"
+    repository: https://helm.datadoghq.com

@@ -1,0 +1,9 @@
+extsecrets:
+  enabled: false
+
+datadog:
+  datadog:
+    dogstatsd:
+      tags:
+        - lumen-env:gilad-local-test
+        - lumen-maturity:stage
