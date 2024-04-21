@@ -13,7 +13,7 @@ spec:
     path: my-app
   destination:
     server: https://kubernetes.default.svc
-    namespace: datadog
+    namespace: test
   syncPolicy:
     automated:
       prune: true
