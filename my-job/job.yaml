@@ -3,8 +3,8 @@ kind: Job
 metadata:
   name: simple-success-job
   namespace: test
-  # annotations:
-  #   argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  annotations:
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
   labels:
     argocd.argoproj.io/instance: my-job
 spec:
@@ -22,4 +22,4 @@ spec:
   selector:
     matchLabels:
       job-name: simple-success-job  # Selector matching the label defined in the pod template
-  ttlSecondsAfterFinished: 1000
+  ttlSecondsAfterFinished: 10
