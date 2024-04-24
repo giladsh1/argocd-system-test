@@ -1,9 +1,10 @@
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: liquibase-runner-job-202404241713189  # unique name for each Job instance
+  name: liquibase-runner-job-20240424172452
   labels:
-    job: liquibase-runner-job-202404241713189  # this label should match the auto-generated selector
+    job: liquibase-runner-job-20240424172452
 spec:
   parallelism: 1
   completions: 1
@@ -12,11 +13,12 @@ spec:
   template:
     metadata:
       labels:
-        job: liquibase-runner-job-202404241713189 # same label as in metadata, used by the auto-generated selector
+        job: liquibase-runner-job-20240424172452
     spec:
       serviceAccountName: default
       containers:
-        - name: liquibase-runner-job-202404241713189
+        - name: liquibase-runner-job-20240424172452
           image: busybox:glibc
           command: ["sh", "-c", "sleep 2 && echo success new! && exit 0"]
-      restartPolicy: Never
+      restartPolicy: "Never"
+  backoffLimit: 3
