@@ -1,16 +1,25 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: simple-success-job-
+  name: simple-success-job
   namespace: test
   annotations:
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  labels:
+    argocd.argoproj.io/instance: my-job
 spec:
   template:
+    metadata:
+      name: simple-success-job
+      labels:
+        job-name: simple-success-job  # Ensure this label is added for the selector to match
     spec:
       containers:
       - name: success-container
         image: busybox
         command: ["sh", "-c", "sleep 5 && echo success && exit 0"]
       restartPolicy: Never
+  selector:
+    matchLabels:
+      job-name: simple-success-job  # Selector matching the label defined in the pod template
   ttlSecondsAfterFinished: 10000
