@@ -1,21 +1,18 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: liquibase-runner-job-20240424171318
+  name: liquibase-runner-job-20240424171318  # unique name for each Job instance
   labels:
-    job: liquibase-runner-job-20240424171318
+    job: liquibase-runner-job-20240424171318  # this label should match the auto-generated selector
 spec:
   parallelism: 1
   completions: 1
   activeDeadlineSeconds: 1800
   ttlSecondsAfterFinished: 2628000
-  selector:
-    matchLabels:
-      job: liquibase-runner-job-20240424171318
   template:
     metadata:
       labels:
-        job: liquibase-runner-job-20240424171318
+        job: liquibase-runner-job-20240424171318  # same label as in metadata, used by the auto-generated selector
     spec:
       serviceAccountName: default
       containers:
