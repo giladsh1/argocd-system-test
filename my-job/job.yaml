@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: simple-success-job
+  namespace: default
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    metadata:
+      name: simple-success-job
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: success-container
+        image: busybox
+        command: ['sh', '-c', 'echo "success" && exit 0']
