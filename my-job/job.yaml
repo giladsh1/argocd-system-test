@@ -3,9 +3,9 @@ kind: Job
 metadata:
   name: simple-success-job
   namespace: test 
-  # annotations:
-  #   argocd.argoproj.io/hook: PreSync
-    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
+  annotations:
+    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
   labels:
     argocd.argoproj.io/instance: my-job
 spec:
