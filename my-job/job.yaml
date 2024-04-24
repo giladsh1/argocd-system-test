@@ -10,17 +10,10 @@ metadata:
     argocd.argoproj.io/instance: my-job
 spec:
   template:
-    metadata:
-      name: simple-success-job
-      labels:
-        job-name: simple-success-job  # Ensure this label is added for the selector to match
     spec:
       containers:
       - name: success-container
-        image: busybox:glibc
+        image: busybox
         command: ["sh", "-c", "sleep 2 && echo success new! && exit 0"]
       restartPolicy: Never
-  selector:
-    matchLabels:
-      job-name: simple-success-job  # Selector matching the label defined in the pod template
   ttlSecondsAfterFinished: 100
