@@ -2,9 +2,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: liquibase-runner-job-20240424172452
+  name: liquibase-runner-job-2024042417245299
   labels:
-    job: liquibase-runner-job-20240424172452
+    job: liquibase-runner-job-2024042417245299
 spec:
   parallelism: 1
   completions: 1
@@ -13,12 +13,12 @@ spec:
   template:
     metadata:
       labels:
-        job: liquibase-runner-job-20240424172452
+        job: liquibase-runner-job-2024042417245299
     spec:
       serviceAccountName: default
       containers:
-        - name: liquibase-runner-job-20240424172452
+        - name: liquibase-runner-job-2024042417245299
           image: busybox:glibc
-          command: ["sh", "-c", "sleep 2 && echo success new! && exit 0"]
+          command: ["sh", "-c", "sleep 2 && echo success new!!! && exit 0"]
       restartPolicy: "Never"
   backoffLimit: 3
