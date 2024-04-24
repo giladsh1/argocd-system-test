@@ -22,4 +22,4 @@ spec:
   selector:
     matchLabels:
       job-name: simple-success-job  # Selector matching the label defined in the pod template
-  ttlSecondsAfterFinished: 10
+  ttlSecondsAfterFinished: 100
