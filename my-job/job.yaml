@@ -1,11 +1,11 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: simple-success-job
-  namespace: test
+  generateName: simple-success-job-
+  namespace: test 
   annotations:
     argocd.argoproj.io/hook: PreSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
   labels:
     argocd.argoproj.io/instance: my-job
 spec:
