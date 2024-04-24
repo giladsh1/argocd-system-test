@@ -23,5 +23,4 @@ spec:
       - Validate=true
       - CreateNamespace=true
       - PrunePropagationPolicy=foreground
-      - PruneLast=true
       - Replace=true
