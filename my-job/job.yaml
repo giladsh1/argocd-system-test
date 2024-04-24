@@ -4,10 +4,10 @@ metadata:
   name: simple-success-job
   namespace: test
   annotations:
-    argocd.argoproj.io/hook: PreSync
-    # argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    # argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
-  ttlSecondsAfterFinished: 5  # Job will be deleted 60 seconds after completion
+  ttlSecondsAfterFinished: 100  # Job will be deleted 60 seconds after completion
   template:
     metadata:
       name: simple-success-job
