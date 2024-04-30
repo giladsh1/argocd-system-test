@@ -3,6 +3,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: liquibase-runner-job-2024042417245299
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
   labels:
     job: liquibase-runner-job-2024042417245299
 spec:
