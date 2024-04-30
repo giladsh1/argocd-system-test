@@ -2,11 +2,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: liquibase-runner-job-202404241724521
+  name: liquibase-runner-job-20240424172452111
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/hook: PreSync
   labels:
-    job: liquibase-runner-job-202404241724521
+    job: liquibase-runner-job-20240424172452111
 spec:
   parallelism: 1
   completions: 1
@@ -15,11 +16,11 @@ spec:
   template:
     metadata:
       labels:
-        job: liquibase-runner-job-202404241724521
+        job: liquibase-runner-job-20240424172452111
     spec:
       serviceAccountName: default
       containers:
-        - name: liquibase-runner-job-202404241724521
+        - name: liquibase-runner-job-20240424172452111
           image: busybox:glibc
           command: ["sh", "-c", "sleep 30 && echo success new!!! && exit 0"]
       restartPolicy: "Never"
