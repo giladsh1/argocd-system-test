@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.19
+        image: nginx:1.19.1
         ports:
         - containerPort: 80
 ---
@@ -26,6 +26,7 @@ metadata:
   name: liquibase-runner-job-20240424172452222
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
+    argocd.argoproj.io/hook: PreSync
   labels:
     job: liquibase-runner-job-20240424172452222
 spec:
@@ -42,6 +43,6 @@ spec:
       containers:
         - name: liquibase-runner-job-20240424172452222
           image: busybox:glibc
-          command: ["sh", "-c", "sleep 30 && echo success && exit 0"]
+          command: ["sh", "-c", "sleep 30 && echo success new && exit 0"]
       restartPolicy: "Never"
   backoffLimit: 3
