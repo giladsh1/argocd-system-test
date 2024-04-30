@@ -16,18 +16,18 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.19.1
+        image: nginx:1.19
         ports:
         - containerPort: 80
 ---
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: liquibase-runner-job-202404241724522
+  name: liquibase-runner-job-20240424172452222
   annotations:
     argocd.argoproj.io/sync-wave: "-1"
   labels:
-    job: liquibase-runner-job-202404241724522
+    job: liquibase-runner-job-20240424172452222
 spec:
   parallelism: 1
   completions: 1
@@ -36,12 +36,12 @@ spec:
   template:
     metadata:
       labels:
-        job: liquibase-runner-job-202404241724522
+        job: liquibase-runner-job-20240424172452222
     spec:
       serviceAccountName: default
       containers:
-        - name: liquibase-runner-job-202404241724522
+        - name: liquibase-runner-job-20240424172452222
           image: busybox:glibc
-          command: ["sh", "-c", "sleep 30 && echo success new!! && exit 0"]
+          command: ["sh", "-c", "sleep 30 && echo success && exit 0"]
       restartPolicy: "Never"
   backoffLimit: 3
