@@ -1,48 +1,29 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
-  name: nginx-deployment
-  annotations:
-    argocd.argoproj.io/sync-wave: "2"
+  name: canary-demo-promote
+  namespace: rollout
 spec:
+  replicas: 3
+  strategy:
+    canary:
+      steps:
+      - setWeight: 25
+      - pause: {}
+      - setWeight: 50
+      - pause: {}
+      - setWeight: 75
+      - pause: {}
   selector:
     matchLabels:
-      app: nginx
-  replicas: 3
+      app: demo-app
   template:
     metadata:
       labels:
-        app: nginx
+        app: demo-app
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.19.1
+      - name: demo-container
+        image: nginx:1.18.0
         ports:
         - containerPort: 80
-
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: liquibase-runner-job-202404241724111
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
-  labels:
-    job: liquibase-runner-job-202404241724111
-spec:
-  parallelism: 1
-  completions: 1
-  activeDeadlineSeconds: 1800
-  ttlSecondsAfterFinished: 2628000
-  template:
-    metadata:
-      labels:
-        job: liquibase-runner-job-202404241724111
-    spec:
-      serviceAccountName: default
-      containers:
-        - name: liquibase-runner-job-202404241724111
-          image: busybox:glibc
-          command: ["sh", "-c", "sleep 60 && echo success new && exit 0"]
-      restartPolicy: "Never"
-  backoffLimit: 3
