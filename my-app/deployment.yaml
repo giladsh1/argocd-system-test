@@ -24,6 +24,6 @@ spec:
     spec:
       containers:
       - name: demo-container
-        image: nginx:1.19.0
+        image: nginx:1.19.1
         ports:
         - containerPort: 80
