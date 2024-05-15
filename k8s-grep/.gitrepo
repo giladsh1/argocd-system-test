@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:giladsh1/k8s-grep.git
+	branch = main
+	commit = 5aa256135c052eb7c2fa99ef5d6ccecac1401b96
+	parent = 052c76be3638ce36afb3710769dc879bcff11c47
+	method = merge
+	cmdver = 0.4.6
